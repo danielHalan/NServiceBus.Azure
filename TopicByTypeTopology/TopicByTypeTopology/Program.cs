@@ -109,9 +109,9 @@ namespace TopicByTypeTopology
 
         private static void AddFilter(IEnumerable<RuleDescription> rules, SubscriptionClient subscriptionClient, string s)
         {
-            if (rules.Any(r => r.Name == "$Default"))
+            if (rules.Any(r => r.Name == RuleDescription.DefaultRuleName))
             {
-                subscriptionClient.RemoveRule("$Default");
+                subscriptionClient.RemoveRule(RuleDescription.DefaultRuleName);
 
                 subscriptionClient.AddRule("TypeFilter", new SqlFilter(s));
             }
